@@ -9,9 +9,9 @@
 import UIKit
 
 class MemeCollectionViewController: UICollectionViewController {
-    
-    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
 
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+        
     var memes: [Meme]! {
         let object = UIApplication.shared.delegate
         let appDelegate = object as! AppDelegate
@@ -35,7 +35,7 @@ class MemeCollectionViewController: UICollectionViewController {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.memes.count
     }
