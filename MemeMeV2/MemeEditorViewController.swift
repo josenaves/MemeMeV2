@@ -81,8 +81,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     @IBAction func cancel() {
-        // reset ui
-        resetUI()
+        // TODO: save image here ?
+        
+        // dismiss this view and go back to Sent Memes View
+        dismiss(animated: true)
     }
     
     @IBAction func shareMeme() {
