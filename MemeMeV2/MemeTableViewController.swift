@@ -21,6 +21,14 @@ class MemeTableViewController: UIViewController, UITableViewDataSource, UITableV
         print("MemeTableViewController - viewDidLoad")
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("MemeTableViewController - viewWillAppear")
+        print("memes: \(memes ?? [])")
+
+//        tableView.reloadData() // forces the data reload to ensure we got updated memes
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.memes.count
     }
@@ -39,7 +47,6 @@ class MemeTableViewController: UIViewController, UITableViewDataSource, UITableV
 //        }
         
         return cell
-
     }
     
 }
