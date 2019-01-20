@@ -81,8 +81,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     @IBAction func cancel() {
-        // TODO: save image here ?
-        
         // dismiss this view and go back to Sent Memes View
         dismiss(animated: true)
     }
@@ -109,6 +107,9 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
             if completed {
                 //  save on gallery
                 self.saveMemeInGallery(selectedImage: meme.memedImage)
+                
+                // save metadata
+                self.save(meme: meme)
             }
         }
     }
@@ -209,5 +210,21 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         ac.addAction(UIAlertAction(title: "OK", style: .default))
         present(ac, animated: true)
     }
+    
+    func save(meme: Meme) {
+        print("save...")
+        print("meme: \(meme)")
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        print("appDelegate.memes: \(appDelegate.memes)")
 
+        appDelegate.memes.append(meme)
+        
+        print("appDelegate.memes: \(appDelegate.memes)")
+        
+        if let navigationController = navigationController {
+            navigationController.popViewController(animated: true)
+        }
+    }
 }

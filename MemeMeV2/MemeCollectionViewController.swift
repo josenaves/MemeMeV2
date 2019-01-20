@@ -33,6 +33,11 @@ class MemeCollectionViewController: UICollectionViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
+        print("MemeCollectionViewController - viewWillAppear")
+        print("memes: \(memes ?? [])")
+
+        collectionView.reloadData() // forces the data reload to ensure we got updated memes
         self.tabBarController?.tabBar.isHidden = false
     }
     
