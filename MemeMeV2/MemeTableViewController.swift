@@ -18,13 +18,11 @@ class MemeTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("MemeTableViewController - viewDidLoad")
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("MemeTableViewController - viewWillAppear")
-        print("memes: \(memes ?? [])")
+        tableView.reloadData()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -41,25 +39,16 @@ class MemeTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//
-//        // Get the selected adventure
-//        let selectedAdventure = adventures[(indexPath as NSIndexPath).row]
-//        
-//        // Get the first node
-//        let firstNodeInTheAdventure = selectedAdventure.startNode
-//
-//        // Get a StoryNodeController from the Storyboard
-//        let storyNodeController = self.storyboard!.instantiateViewController(withIdentifier: "StoryNodeViewController")as! StoryNodeViewController
-//
-//        // Set the story node so that we will see the start of the story
-//        storyNodeController.storyNode = firstNodeInTheAdventure
-//
-//        // Push the new controller onto the stack
-//        self.navigationController!.pushViewController(storyNodeController, animated: true)
-    }
-
-    
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
+        // get the selected meme
+        let selectedMeme = memes[indexPath.row]
+        
+        // get the DetailController from the storyboard
+        let memeDetailViewController = storyboard?.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
+        
+        // set the meme selected
+        memeDetailViewController.meme = selectedMeme
+        
+        // push the new controlle onto the stack
+        navigationController?.pushViewController(memeDetailViewController, animated: true)
     }
 }
