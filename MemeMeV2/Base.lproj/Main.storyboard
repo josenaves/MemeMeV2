@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Detail View Controller-->
+        <!--Meme Detail View Controller-->
         <scene sceneID="z6L-Qz-N3d">
             <objects>
-                <viewController id="ABH-27-afv" customClass="DetailViewController" customModule="MemeMeV2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MemeDetailViewController" id="ABH-27-afv" customClass="MemeDetailViewController" customModule="MemeMeV2" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YnQ-V3-XVw"/>
                         <viewControllerLayoutGuide type="bottom" id="qWE-sS-dfz"/>
@@ -171,10 +171,10 @@
             </objects>
             <point key="canvasLocation" x="-2135" y="-475"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Meme Table View Controller-->
         <scene sceneID="6fP-Zt-ufp">
             <objects>
-                <tableViewController id="w1v-fX-oFC" sceneMemberID="viewController">
+                <tableViewController id="w1v-fX-oFC" customClass="MemeTableViewController" customModule="MemeMeV2" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="tGU-Li-TlE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -309,6 +309,6 @@
         <image name="list" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="vud-mS-1m6"/>
+        <segue reference="fwm-av-lnO"/>
     </inferredMetricsTieBreakers>
 </document>
