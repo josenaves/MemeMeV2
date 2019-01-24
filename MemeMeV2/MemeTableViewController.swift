@@ -10,14 +10,15 @@ import UIKit
 
 class MemeTableViewController: UITableViewController {
     
-    var memes: [Meme]! {
-        let object = UIApplication.shared.delegate
-        let appDelegate = object as! AppDelegate
-        return appDelegate.memes
-    }
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    var memes: [Meme] {
+        get {
+            return appDelegate.memes
+        }
+        set(_memes) {
+            appDelegate.memes = _memes
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -40,6 +41,7 @@ class MemeTableViewController: UITableViewController {
         return cell
     }
     
+    // MARK - Send the user to the meme view
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // get the selected meme
         let selectedMeme = memes[indexPath.row]
@@ -52,5 +54,17 @@ class MemeTableViewController: UITableViewController {
         
         // push the new controlle onto the stack
         navigationController?.pushViewController(memeDetailViewController, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    // MARK: To delete the meme
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            self.memes.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
     }
 }
